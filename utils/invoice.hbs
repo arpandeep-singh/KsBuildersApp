@@ -1,0 +1,176 @@
+<html>
+    <head>
+<style>
+    .company{
+        display: grid;
+        grid-gap: 0.81em;
+        
+    }
+    .name{
+        align-items: start;
+        font-size: 2.5em;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+    .wrapper{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-auto-rows: minmax(80px,auto);
+        grid-gap: 0.3em;
+        justify-items:stretch;
+        align-items: stretch;
+        margin-bottom: 70px;    
+    }
+    .wrapper> div{
+        background: #eee;
+        padding: 0.3em    
+    }
+    
+    .box>div{
+        margin: 0.2em
+    }
+    
+    .box1{
+        grid-row: 1/3;
+     
+    }
+    .box5{
+       grid-column: 2/5 
+    }
+    
+    .heading{
+        color: blue;
+        font-weight: 600
+    }
+    .amt{
+        font-size: 24px;
+        text-align: right;
+    }
+    .amt-heading{
+        text-align: right
+    }
+    
+    .container{
+        padding-top: 30px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+border: none
+}
+
+td, th {
+  border: none;
+  text-align: left;
+  padding: 8px;  
+}
+
+    .topHeading{
+         border: none;
+    border-top: 3px solid blue;
+    color: blue
+    }
+    .info{
+        
+        border-bottom: 1px solid lightgrey
+    }
+    .bottom-info{
+        margin-top: 20px;
+        width: 50%;
+        float: right;
+        
+    }
+    .bottom-info td {
+        text-align: right;
+    }
+    
+    .bottom-info tr:nth-child(even){
+        padding: 15px;
+        border-bottom: 2px solid lightgrey;
+    }
+    .bottom-info tr :first-child{
+        padding: 10px;
+    }
+
+    
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="company">
+        <div class="name">{{data.company}}</div>
+        <div class="company-details">
+            GST/HST: {{company.hst}}<br>
+            Contact: {{company.contact}}<br>
+            Email: {{company.email}}
+            
+            </div>
+        </div>
+         <h2>INVOICE</h2>
+         <div class="wrapper">
+        <div class="box box1">
+             <div class="heading">Billed To</div>
+            <div class="details">{{data.customerName}}<br>{{data.address}}</div>
+             </div>
+              <div class="box box2">
+              <div class="heading">Date of Issue</div>
+            <div class="details">06/03/2021</div>
+             </div>
+              <div class="box box3">
+              <div class="heading">Invoice Number</div>
+            <div class="details">000005</div>
+             </div>
+              <div class="box box4">
+              <div class="heading amt-heading">Amount Due (CAD)</div>
+            <div class="details amt">${{data.balance}}</div>
+             </div>
+             <div class="box box5">
+              <div class="heading">Due Date</div>
+            <div class="details">07/03/2021</div>
+             </div>
+             
+        </div>
+    <table>
+  <tr class="topHeading">
+    <th style="width: 60%">Description</th>
+    <th style="text-align: right">Rate</th>
+    <th style="text-align: right">Total</th>
+  </tr>
+  <tr class="info">
+    <td>{{data.description}}</td>
+    <td style="text-align: right;width: 20%">$ {{data.totalCost}}</td>
+    <td style="text-align: right">$ {{data.totalCost}}</td>
+  </tr>
+</table>
+        <div class="bottom-info">
+    <table>
+  <tr>
+    <td>Subtotal</td>
+    <td>{{data.totalCost}}</td>
+  </tr>
+  <tr>
+    <td>Tax</td>
+    <td>{{data.tax}}</td>
+  </tr>
+  <tr>
+    <td>Total</td>
+    <td>{{data.totalCostWithTax}}</td>
+  </tr>
+                  <tr>
+    <td>Amount Paid</td>
+    <td>{{data.paidAmount}}</td>
+  </tr>
+  <tr>
+    <td style="color: blue;font-weight: 600">Amount Due (CAD)</td>
+    <td>$ {{data.balance}}</td>
+  </tr>
+
+</table>
+        </div>
+        
+   </div>
+</body>
+</html>
